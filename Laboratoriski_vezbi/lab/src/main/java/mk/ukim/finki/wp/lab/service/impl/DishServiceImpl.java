@@ -1,0 +1,24 @@
+package mk.ukim.finki.wp.lab.service.impl;
+import lombok.RequiredArgsConstructor;
+import mk.ukim.finki.wp.lab.model.Dish;
+import mk.ukim.finki.wp.lab.repository.DishRepository;
+import mk.ukim.finki.wp.lab.service.DishService;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+
+@Service
+@RequiredArgsConstructor
+public class DishServiceImpl implements DishService {
+    private final DishRepository dish_repo;
+
+    @Override
+    public List<Dish> listDishes() {
+        return dish_repo.findAll();
+    }
+
+    @Override
+    public Dish findByDishId(String dishId) {
+        return dish_repo.findByDishId(dishId);
+    }
+}
