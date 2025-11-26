@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Dishes List</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            width: 800px;
+            margin: auto;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            border: 1px solid #ccc;
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
+        form {
+            display: inline; /* за Edit и Delete копчиња да бидат во ист ред */
+        }
+        input[type=submit] {
+            padding: 5px 10px;
+            margin-left: 5px;
+        }
+        .add-button {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+<h1>Dishes List</h1>
+
+<!-- Add Dish button -->
+<div class="add-button">
+    <form method="get" action="/dishes/dish-form">
+        <input type="submit" value="Add Dish">
+    </form>
+</div>
+
+<!-- Dishes Table -->
+<table>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Cuisine</th>
+        <th>Preparation Time</th>
+        <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="dish : ${dishes}">
+        <td th:text="${dish.id}"></td>
+        <td th:text="${dish.name}"></td>
+        <td th:text="${dish.cuisine}"></td>
+        <td th:text="${dish.preparationTime}"></td>
+        <td>
+            <form method="get" th:action="@{/dishes/dish-form/{id} (id=${dish.id})}">
+                <input type="submit" value="Edit"/>
+            </form>
+            <form method="post" th:action="@{/dishes/delete/{id} (id=${dish.id})}">
+                <input type="submit" value="Delete"/>
+            </form>
+        </td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>
