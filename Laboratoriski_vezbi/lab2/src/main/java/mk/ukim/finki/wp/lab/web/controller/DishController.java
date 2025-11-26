@@ -25,6 +25,7 @@ public class DishController {
     public String getDishesPage(@RequestParam(required = false) String error, Model model){
         List<Dish> dishes=dishService.listDishes();
         model.addAttribute("dishes",dishes);
+        model.addAttribute("error", error);
         return "listDishes";
     }
 
@@ -48,6 +49,9 @@ public class DishController {
     @GetMapping("/dishes/dish-form/{id}")
     public String getEditDishForm(@PathVariable Long id, Model model){
         Dish dish=dishService.findById(id);
+        if (dish == null) {
+            return "redirect:/dishes?error=DishNotFound";
+        }
         model.addAttribute("dish",dish);
         return "dish-form";
     }

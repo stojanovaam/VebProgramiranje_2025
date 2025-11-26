@@ -36,6 +36,10 @@
     </style>
 </head>
 <body>
+<div th:if="${error != null}">
+    <p th:text="${error}" style="color:red; font-weight: bold;"></p>
+</div>
+
 <h1>Dishes List</h1>
 
 <!-- Add Dish button -->

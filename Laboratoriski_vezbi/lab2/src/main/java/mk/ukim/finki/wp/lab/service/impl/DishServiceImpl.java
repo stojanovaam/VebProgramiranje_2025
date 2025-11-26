@@ -24,7 +24,8 @@ public class DishServiceImpl implements DishService {
 
     @Override
     public Dish findById(Long id) {
-        return dish_repo.findById(id).get(); //go zima dish spored id i go vrakja
+        //return dish_repo.findById(id).get(); //go zima dish spored id i go vrakja
+        return dish_repo.findById(id).orElse(null);
     }
 
     @Override
