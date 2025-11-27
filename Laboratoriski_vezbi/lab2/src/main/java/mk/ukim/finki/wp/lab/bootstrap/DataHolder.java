@@ -27,7 +27,8 @@ public class DataHolder {
                     "FirstName"+i,
                     "LastName" +i,
                     "Bio" +i,
-                    new ArrayList<>());
+                    new ArrayList<>(),
+                    Chef.Gender.NOTDEFINED);
             chefs.add(newChef);
         }
     }

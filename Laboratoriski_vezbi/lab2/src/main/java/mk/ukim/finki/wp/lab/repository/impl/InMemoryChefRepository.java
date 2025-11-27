@@ -2,6 +2,7 @@ package mk.ukim.finki.wp.lab.repository.impl;
 
 import mk.ukim.finki.wp.lab.bootstrap.DataHolder;
 import mk.ukim.finki.wp.lab.model.Chef;
+import mk.ukim.finki.wp.lab.model.Dish;
 import mk.ukim.finki.wp.lab.repository.ChefRepository;
 import org.springframework.stereotype.Repository;
 
@@ -36,11 +37,21 @@ public class InMemoryChefRepository implements ChefRepository {
             azhuriraj.setFirstName(chef.getFirstName());
             azhuriraj.setLastName(chef.getLastName());
             azhuriraj.setBio(chef.getBio());
-            azhuriraj.setDishes(chef.getDishes());
+            azhuriraj.setGender(chef.getGender());
             return azhuriraj;
         }
         //AKO NE POSTOI DODAJ NOV
         DataHolder.chefs.add(chef);
         return chef;
+    }
+
+    @Override
+    public void deleteById(Long id) {
+        for(Chef deletedChef:DataHolder.chefs){
+            if(deletedChef.getId().equals(id)){
+                DataHolder.chefs.remove(deletedChef);
+                break;
+            }
+        }
     }
 }

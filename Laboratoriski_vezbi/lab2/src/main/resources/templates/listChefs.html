@@ -19,6 +19,11 @@
     <h1>Welcome to Our Restaurant</h1>
 </header>
 <main>
+    <div class="add-button">
+        <form method="get" action="/chefs/chef-form">
+            <input type="submit" value="Add Chef">
+        </form>
+    </div>
     <h2>Choose a chef:</h2>
     <form action="/dish" method="POST">
         <!-- Display radio buttons for each chef,
@@ -30,7 +35,9 @@
                name="chefId"
                th:value="${chef.id}"
                th:text="| Name: ${chef.firstName} ${chef.lastName}, Bio: ${chef.bio} |">
-        <br/>
+            <a th:href="@{/chefs/chef-form/{id} (id=${chef.id})}">EDIT CHEF</a>
+            <a th:href="@{/chefs/delete/{id} (id=${chef.id})}">DELETE CHEF</a>
+            <br/>
         </div>
         <!--za value, SHTO SE ISPRAKJA U BARANJETO neshto unikatno za prepoznavanje na objektot -->
         <!--th:text e toa shto mu se prikazhuva na korisnikot-->

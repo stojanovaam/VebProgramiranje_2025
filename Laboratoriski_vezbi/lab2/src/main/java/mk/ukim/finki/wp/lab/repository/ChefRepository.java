@@ -1,6 +1,7 @@
 package mk.ukim.finki.wp.lab.repository;
 
 import mk.ukim.finki.wp.lab.model.Chef;
+import mk.ukim.finki.wp.lab.model.Dish;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -10,4 +11,5 @@ public interface ChefRepository {
     List<Chef> findAll();
     Optional<Chef> findById(Long id);
     Chef save(Chef chef);
+    void deleteById(Long id);
 }
