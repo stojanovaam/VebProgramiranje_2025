@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--ako e povikano za ADD na edna patek,a ako e povikano za EDIT na dr pateka-->
+<!--    <form method="post" th:action="${dish == null} ? @{/dishes/add} : @{/dishes/edit/{id} (id = ${dish.id})"> -->
+<form method="post"
+      th:action="${dish == null} ? '/dishes/add' : '/dishes/edit/' + ${dish.id}">
+        <label>Dish id: </label>
+        <input type="text" name="dishId" th:value="${dish?.dishId}"/>
+        <br/>
+
+        <label>Name: </label>
+        <input type="text" name="name" th:value="${dish?.name}"/>
+        <br/>
+
+        <label>Cuisine: </label>
+        <input type="text" name="cuisine" th:value="${dish?.cuisine}"/>
+        <br/>
+
+        <label>Preparation time: </label>
+        <input type="number" name="preparationTime" th:value="${dish?.preparationTime}"/>
+        <br/>
+
+        <label>Select chef: </label>
+        <select name="chefId">
+            <option th:each="chef : ${chefs}"
+                    th:value="${chef.id}"
+                    th:text="| ${chef.firstName} ${chef.lastName} |"
+                    th:selected="${chef.id} == ${dish?.chef?.id}"></option>
+        </select>
+
+        <input type="submit" value="Submit"/>
+    </form>
+</body>
+</html>
