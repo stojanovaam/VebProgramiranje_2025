@@ -33,6 +33,20 @@
                     th:selected="${chef.id} == ${dish?.chef?.id}"></option>
         </select>
 
+        <label>Rank: </label>
+        <select name="rank">
+            <option th:each="r : ${T(mk.ukim.finki.wp.lab.model.DishRank).values()}"
+                th:value="${r}"
+                th:text="${r}"
+                th:selected="${dish?.rank} == ${r}"></option>
+        </select>
+        <br/>
+
+        <label>Rating: </label>
+        <input type="number" name="rating" th:value="${dish?.rating}" step="0.1" min="0" max="5"/>
+        <br/>
+
+
         <input type="submit" value="Submit"/>
     </form>
 </body>

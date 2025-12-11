@@ -71,6 +71,8 @@
         <th>Cuisine</th>
         <th>Preparation Time</th>
         <th>Chefs</th>
+        <th>Dish Rank</th>
+        <th>Rating</th>
         <th>Actions</th>
     </tr>
     </thead>
@@ -81,6 +83,8 @@
         <td th:text="${dish.cuisine}"></td>
         <td th:text="${dish.preparationTime}"></td>
         <td th:text="| ${dish.chef.firstName} ${dish.chef.lastName} |"></td>
+        <td th:text="${dish.rank}"></td>
+        <td th:text="${dish.rating}"></td>
         <td>
             <form method="get" th:action="@{/dishes/dish-form/{id} (id=${dish.id})}">
                 <input type="submit" value="Edit"/>

@@ -4,6 +4,7 @@ package mk.ukim.finki.wp.lab.service.impl;
 import lombok.RequiredArgsConstructor;
 import mk.ukim.finki.wp.lab.model.Chef;
 import mk.ukim.finki.wp.lab.model.Dish;
+import mk.ukim.finki.wp.lab.model.DishRank;
 import mk.ukim.finki.wp.lab.repository.ChefRepository;
 import mk.ukim.finki.wp.lab.repository.DishRepository;
 import mk.ukim.finki.wp.lab.service.ChefService;

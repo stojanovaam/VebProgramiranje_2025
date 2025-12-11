@@ -27,11 +27,18 @@ public class Dish {
     @ManyToOne
     private Chef chef;
 
-    public Dish(String dishId, String name, String cuisine, int preparationTime, Chef chef) {
+    @Enumerated(EnumType.STRING)
+    private DishRank rank;  //novo pole za rank
+
+    private double rating;  //novo pole za rating
+
+    public Dish(String dishId, String name, String cuisine, int preparationTime, Chef chef, DishRank rank, double rating) {
         this.dishId = dishId;
         this.name = name;
         this.cuisine = cuisine;
         this.preparationTime = preparationTime;
         this.chef = chef;
+        this.rank = rank;
+        this.rating = rating;
     }
 }

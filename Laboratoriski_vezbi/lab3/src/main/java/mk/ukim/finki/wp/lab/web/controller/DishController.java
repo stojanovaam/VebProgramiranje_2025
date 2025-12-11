@@ -2,6 +2,7 @@ package mk.ukim.finki.wp.lab.web.controller;
 
 import mk.ukim.finki.wp.lab.model.Chef;
 import mk.ukim.finki.wp.lab.model.Dish;
+import mk.ukim.finki.wp.lab.model.DishRank;
 import mk.ukim.finki.wp.lab.service.ChefService;
 import mk.ukim.finki.wp.lab.service.DishService;
 import org.springframework.stereotype.Controller;
@@ -37,8 +38,11 @@ public class DishController {
                            @RequestParam String name,
                            @RequestParam String cuisine,
                            @RequestParam int preparationTime,
-                           @RequestParam Long chefId){
-        dishService.create(dishId,name,cuisine,preparationTime,chefId);
+                           @RequestParam Long chefId,
+                           @RequestParam String rank,
+                           @RequestParam Double rating){
+        DishRank dishRank = DishRank.valueOf(rank);
+        dishService.create(dishId,name,cuisine,preparationTime,chefId,dishRank,rating);
         return "redirect:/dishes";
     }
 
@@ -68,8 +72,11 @@ public class DishController {
                            @RequestParam String name,
                            @RequestParam String cuisine,
                            @RequestParam int preparationTime,
-                           @RequestParam Long chefId){
-        dishService.update(id,dishId,name,cuisine,preparationTime,chefId);
+                           @RequestParam Long chefId,
+                           @RequestParam String rank,
+                           @RequestParam Double rating){
+        DishRank dishRank = DishRank.valueOf(rank);
+        dishService.update(id,dishId,name,cuisine,preparationTime,chefId,dishRank,rating);
         return "redirect:/dishes";
     }
 

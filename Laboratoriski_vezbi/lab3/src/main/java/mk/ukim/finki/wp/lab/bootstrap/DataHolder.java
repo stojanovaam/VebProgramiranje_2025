@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import mk.ukim.finki.wp.lab.model.Chef;
 import mk.ukim.finki.wp.lab.model.Dish;
+import mk.ukim.finki.wp.lab.model.DishRank;
 import mk.ukim.finki.wp.lab.repository.ChefRepository;
 import mk.ukim.finki.wp.lab.repository.DishRepository;
 import org.springframework.stereotype.Component;
@@ -36,7 +37,9 @@ public class DataHolder {
                     "DishName"+i,
                     "Cuisine"+i,
                     i,
-                    newChef);
+                    newChef,
+                    DishRank.MEDIUM,
+                    i);
             dishRepository.save(newDish);
         }
     }
